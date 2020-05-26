@@ -34,15 +34,13 @@ function getmessage(name,res){
                 return 
             }
             let decrypted_data=data.map(result=>{
-                console.log(result.message)
                 let body={
                     sent_by:result.sent_by,
                     received_by:result.received_by,
+                    message:encrypting.decrypt(result.message)
                 }
                 return body 
             })
-            console.log(encrypting.decrypt(data[0].message))
-            console.log(decrypted_data)
             res.send({status:'success',data:decrypted_data})
         })
     })
